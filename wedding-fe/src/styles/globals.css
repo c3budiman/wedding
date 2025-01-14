@@ -17,11 +17,89 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: hsla(315, 0%, 0%, 1);
+  background-image: 
+    radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0) 0px, transparent 50%), 
+    radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0) 0px, transparent 50%);
+  animation: breathingBackground 6s infinite ease-in-out;
+}
+
+@keyframes breathingBackground {
+  0%, 100% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.1) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.1) 0px, transparent 50%);
+  }
+  5% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.15) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.15) 0px, transparent 50%);
+  }
+  10% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.2) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.2) 0px, transparent 50%);
+  }
+  15% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.25) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.25) 0px, transparent 50%);
+  }
+  20% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.3) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.3) 0px, transparent 50%);
+  }
+  50% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.8) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.8) 0px, transparent 50%);
+  }
+  55% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.75) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.75) 0px, transparent 50%);
+  }
+  60% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.7) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.7) 0px, transparent 50%);
+  }
+  65% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.65) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.65) 0px, transparent 50%);
+  }
+  70% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.6) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.6) 0px, transparent 50%);
+  }
+  75% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.55) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.55) 0px, transparent 50%);
+  }
+  80% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.5) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.5) 0px, transparent 50%);
+  }
+  85% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.45) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.45) 0px, transparent 50%);
+  }
+  90% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.4) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.4) 0px, transparent 50%);
+  }
+  95% {
+    background-image: 
+      radial-gradient(at 89% 4%, hsla(39, 100%, 31%, 0.35) 0px, transparent 50%), 
+      radial-gradient(at 12% 70%, hsla(34, 100%, 12%, 0.35) 0px, transparent 50%);
+  }
 }
 
 * {
