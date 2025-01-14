@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Config from "@/config";
+import { useEffect, useRef } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,41 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleUserInteraction = () => {
+      if (audio) {
+        console.log(audio)
+        // @ts-ignore
+        audio.muted = false; // Unmute the audio
+        // @ts-ignore
+        audio.play().then(() => console.log('Audio is playing')).catch((err) => console.error('Audio play failed:', err));
+      }
+      // Remove listeners after interaction
+      document.removeEventListener('click', handleUserInteraction);
+      document.removeEventListener('touchstart', handleUserInteraction);
+    };
+
+    // Add event listeners for user interaction
+    document.addEventListener('click', handleUserInteraction);
+    document.addEventListener('touchstart', handleUserInteraction); // For mobile devices
+
+    // Cleanup listeners on unmount
+    return () => {
+      document.removeEventListener('click', handleUserInteraction);
+      document.removeEventListener('touchstart', handleUserInteraction);
+      if (audio) {
+        // @ts-ignore
+        audio.pause(); // Stop audio on unmount
+        // @ts-ignore
+        audio.src = ''; // Clear audio source to release memory
+      }
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -23,29 +59,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
-        <main className={styles.main}>
-          {/* <Image
-            // className={styles.logo}
-            src={Config.main_images}
-            alt="Next.js logo"
-            width={180}
-            height={"200"}
-            priority
-          /> */}
+        {/* Audio Element */}
+        <audio loop ref={audioRef}>
+          <source src={Config.main_song} type="audio/mpeg" />
+        </audio>
 
+        <main className={styles.main}>
           <div className={styles.ctas}>
             <a
               className={styles.primary}
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <Image
                 src="/images/envelope.svg"
-                alt="Vercel logomark"
+                alt="Envelope icon"
                 width={20}
                 height={20}
               />
