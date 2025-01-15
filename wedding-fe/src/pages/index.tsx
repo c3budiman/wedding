@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Config from "@/config";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import LetterAnimation from "@/components/LetterAnimation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,8 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   const audioRef = useRef(null);
+
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -59,7 +62,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
@@ -67,22 +69,46 @@ export default function Home() {
         <audio loop ref={audioRef}>
           <source src={Config.main_song} type="audio/mpeg" />
         </audio>
+        {
+          open && (
+            <LetterAnimation />
+          )
+        }
 
-        <main className={styles.main}>
-          <div className={styles.ctas}>
-            <a
-              className={styles.primary}
-            >
-              <Image
-                src="/images/envelope.svg"
-                alt="Envelope icon"
-                width={20}
-                height={20}
-              />
-              Open Invitation
-            </a>
-          </div>
-        </main>
+        {
+          !open && (
+            <>
+
+
+              <main className={styles.main}>
+                <div className={styles.ctas}>
+                  <img style={{ borderRadius: "10px" }} src={Config.main_images} />
+                </div>
+                <div style={{ width: "200px" }} className={styles.ctas}>
+                  <p>Dear Agus, <br /> We Are Inviting you to our humble wedding events</p>
+                </div>
+                <div className={styles.ctas}>
+                  <a
+                    className={styles.primary}
+                    style={{
+                      margin: "0 auto"
+                    }}
+                    onClick={() => setOpen(true)}
+                  >
+                    <Image
+                      src="/images/envelope.svg"
+                      alt="Envelope icon"
+                      width={20}
+                      height={20}
+                    />
+                    Open Invitation
+                  </a>
+                </div>
+              </main>
+
+            </>
+          )
+        }
       </div>
     </>
   );
